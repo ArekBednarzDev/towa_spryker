@@ -607,6 +607,7 @@ customer.forgotten_password.email,E-Mail Adresse,de_DE
 customer.forgotten-password.title,Recover my password,en_US
 customer.forgotten-password.title,Passwort vergessen,de_DE
 customer.order.order_id,Order Id,en_US
+customer.order.order_name,Order Name,en_US
 customer.order.order_id,Bestellnummer,de_DE
 customer.order.view_all,View All,en_US
 customer.order.view_all,Alle anzeigen,de_DE
@@ -3382,6 +3383,7 @@ customer.order_history.search_type.itemName,Product Name,en_US
 customer.order_history.search_type.itemName,Produktname,de_DE
 customer.order_history.search_type.itemSku,Product SKU,en_US
 customer.order_history.search_type.itemSku,Produkt-SKU,de_DE
+customer.order_history.search_type.orderName,Order Name,en_US
 customer.order_history.search,Search,en_US
 customer.order_history.search,Suchen,de_DE
 customer.order_history.date_from,From,en_US
