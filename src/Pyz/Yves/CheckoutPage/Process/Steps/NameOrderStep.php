@@ -26,19 +26,32 @@ class NameOrderStep extends AbstractBaseStep implements StepWithBreadcrumbInterf
      */
     public function postCondition(AbstractTransfer $quoteTransfer): bool
     {
-        return true;
+        return !empty($quoteTransfer->getNameOrder());
     }
 
+    /**
+     * @return string
+     */
     public function getBreadcrumbItemTitle()
     {
         return 'checkout.step.name_order.title';
     }
 
+    /**
+     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $quoteTransfer
+     *
+     * @return bool|null
+     */
     public function isBreadcrumbItemEnabled(AbstractTransfer $quoteTransfer)
     {
         return $this->postCondition($quoteTransfer);
     }
 
+    /**
+     * @param \Spryker\Shared\Kernel\Transfer\AbstractTransfer $quoteTransfer
+     *
+     * @return bool
+     */
     public function isBreadcrumbItemHidden(AbstractTransfer $quoteTransfer)
     {
         return !$this->requireInput($quoteTransfer);
