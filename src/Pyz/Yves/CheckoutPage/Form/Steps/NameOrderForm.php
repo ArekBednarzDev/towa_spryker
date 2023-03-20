@@ -61,7 +61,7 @@ class NameOrderForm extends AbstractType
             'constraints' => [
                 new NotBlank(),
                 new Length(max: 30),
-                new Regex('/^[a-z][-a-z0-9\._]*$/', 'Order name should only contain lower case character a-z and numbers 0-9')
+                new Regex('/^[a-z0-9]*$/', 'Order name should only contain lower case character a-z and numbers 0-9')
             ],
             'required' => true,
             'label' => self::GLOSSARY_NAME_ORDER_LABEL,
