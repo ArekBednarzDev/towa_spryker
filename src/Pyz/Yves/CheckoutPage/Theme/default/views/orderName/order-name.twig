@@ -1,0 +1,25 @@
+{% extends template('page-layout-checkout', 'CheckoutPage') %}
+
+{% define data = {
+    stepNumder: 1,
+    backUrl: _view.previousStepUrl,
+    title: 'checkout.step.name_order.title' | trans,
+    forms: {
+        nameOrder: _view.nameOrderForm
+    },
+} %}
+
+{% block content %}
+    {% embed molecule('form') with {
+        class: 'box',
+        data: {
+            form: data.forms.nameOrder,
+            submit: {
+                enable: true,
+                text: 'checkout.step.address' | trans,
+                class: 'form__action--checkout button  button--large button--expand',
+            }
+        }
+    } only %}
+    {% endembed %}
+{% endblock %}

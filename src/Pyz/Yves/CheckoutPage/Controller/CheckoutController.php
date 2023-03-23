@@ -18,6 +18,40 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class CheckoutController extends SprykerCheckoutController
 {
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return \Spryker\Yves\Kernel\View\View|\Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function nameOrderAction(Request $request)
+    {
+        $quoteValidationResponseTransfer = $this->canPyzProceedCheckout();
+
+        if (!$quoteValidationResponseTransfer->getIsSuccessful()) {
+            $this->processPyzErrorMessages($quoteValidationResponseTransfer->getMessages());
+
+            return $this->redirectResponseInternal(static::ROUTE_CART);
+        }
+
+        $response = $this->getFactory()->createCheckoutProcess()->process(
+            $request,
+            $this->getFactory()
+                ->createPyzCheckoutFormFactory()
+                ->createNameOrderFormCollection(),
+        );
+
+        if (!is_array($response)) {
+            return $response;
+        }
+
+        return $this->view(
+            $response,
+            $this->getFactory()->getCustomerPageWidgetPlugins(),
+            '@CheckoutPage/views/orderName/order-name.twig',
+        );
+    }
+
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
